@@ -1,13 +1,13 @@
-package com.wm.joonggonara;
+package com.frog.todo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JoonggonaraApplication {
+public class FrogTodoServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JoonggonaraApplication.class, args);
+		SpringApplication.run(FrogTodoServerApplication.class, args);
 	}
 
 }
