@@ -1,1 +1,4 @@
 rootProject.name = 'todo'
+include 'todo-item'
+include 'todo-web'
+
