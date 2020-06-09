@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,14 +33,14 @@ public class TodoItemController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public StandardResponseEntity<Long> createTodoItem(@RequestBody TodoCreateRequest todoCreateRequest) {
+    public StandardResponseEntity<Long> createTodoItem(@RequestBody @Valid TodoCreateRequest todoCreateRequest) {
         Long id = todoItemService.save(todoCreateRequest);
         return StandardResponseEntity.ok(id);
     }
 
     @PatchMapping
     @ResponseStatus(HttpStatus.OK)
-    public StandardResponseEntity<Void> updateContents(@RequestBody TodoUpdateRequest todoUpdateRequest) {
+    public StandardResponseEntity<Void> updateContents(@RequestBody @Valid TodoUpdateRequest todoUpdateRequest) {
         todoItemService.update(todoUpdateRequest);
         return StandardResponseEntity.noContent();
     }
