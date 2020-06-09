@@ -1,10 +1,13 @@
 package com.frog.todo.item.service.dto;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TodoDeleteRequest {
     @NotNull
     private Long id;
