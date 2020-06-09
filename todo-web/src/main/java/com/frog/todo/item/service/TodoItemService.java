@@ -5,12 +5,14 @@ import com.frog.todo.item.domain.model.TodoStatus;
 import com.frog.todo.item.domain.repository.TodoItemRepository;
 import com.frog.todo.item.service.dto.TodoCreateRequest;
 import com.frog.todo.item.service.dto.TodoDeleteRequest;
+import com.frog.todo.item.service.dto.TodoItemResponse;
 import com.frog.todo.item.service.dto.TodoStatusChangeRequest;
 import com.frog.todo.item.service.dto.TodoUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -48,4 +50,10 @@ public class TodoItemService {
         TodoItem todoItem = findById(todoDeleteRequest.getId());
         todoItemRepository.delete(todoItem);
     }
+
+    public List<TodoItemResponse> getAllTodoItems() {
+        List<TodoItem> todoItems = todoItemRepository.findAll();
+        return TodoItemResponse.listOf(todoItems);
+    }
+
 }

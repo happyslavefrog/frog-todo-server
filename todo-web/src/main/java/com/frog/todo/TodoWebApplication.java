@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FrogTodoServerApplication {
+public class TodoWebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FrogTodoServerApplication.class, args);
+		SpringApplication.run(TodoWebApplication.class, args);
 	}
 
 }
