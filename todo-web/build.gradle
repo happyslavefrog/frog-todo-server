@@ -18,7 +18,7 @@ dependencies {
 
 ext {
     snippetsDir = file('build/generated-snippets')
-    apiDocsDir = file('src/docs/asciidoc')
+    apiDocsDir = file('src/main/resources/static/docs')
 }
 
 test {

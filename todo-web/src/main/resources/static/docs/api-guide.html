@@ -2,27 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Asciidoctor 2.0.10" name="generator">
+    <meta content="Asciidoctor 1.5.8" name="generator">
     <title>Resources</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
           rel="stylesheet">
     <style>
-        /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
-        /* Uncomment @import statement to use as custom stylesheet */
+        /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+        /* Uncomment @import statement below to use as custom stylesheet */
         /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
-        article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section {
+        article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
             display: block
         }
 
-        audio, video {
+        audio, canvas, video {
             display: inline-block
         }
 
         audio:not([controls]) {
             display: none;
             height: 0
+        }
+
+        script {
+            display: none !important
         }
 
         html {
@@ -32,7 +37,7 @@
         }
 
         a {
-            background: none
+            background: transparent
         }
 
         a:focus {
@@ -288,7 +293,7 @@
         }
 
         a img {
-            border: 0
+            border: none
         }
 
         p {
@@ -502,7 +507,7 @@
             color: rgba(0, 0, 0, .8)
         }
 
-        table tr.even, table tr.alt {
+        table tr.even, table tr.alt, table tr:nth-of-type(even) {
             background: #f8f8f7
         }
 
@@ -529,13 +534,13 @@
             clear: both
         }
 
-        :not(pre):not([class^=L]) > code {
+        *:not(pre) > code {
             font-size: .9375em;
             font-style: normal !important;
             letter-spacing: 0;
             padding: .1em .5ex;
             word-spacing: -.15em;
-            background: #f7f7f8;
+            background-color: #f7f7f8;
             -webkit-border-radius: 4px;
             border-radius: 4px;
             line-height: 1.45;
@@ -543,34 +548,20 @@
             word-wrap: break-word
         }
 
-        :not(pre) > code.nobreak {
+        *:not(pre) > code.nobreak {
             word-wrap: normal
         }
 
-        :not(pre) > code.nowrap {
+        *:not(pre) > code.nowrap {
             white-space: nowrap
         }
 
-        pre {
+        pre, pre > code {
+            line-height: 1.45;
             color: rgba(0, 0, 0, .9);
             font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
-            line-height: 1.45;
+            font-weight: 400;
             text-rendering: optimizeSpeed
-        }
-
-        pre code, pre pre {
-            color: inherit;
-            font-size: inherit;
-            line-height: inherit
-        }
-
-        pre > code {
-            display: block
-        }
-
-        pre.nowrap, pre.nowrap pre {
-            white-space: pre;
-            word-wrap: normal
         }
 
         em em {
@@ -591,7 +582,7 @@
             color: rgba(0, 0, 0, .8);
             font-size: .65em;
             line-height: 1.45;
-            background: #f7f7f7;
+            background-color: #f7f7f7;
             border: 1px solid #ccc;
             -webkit-border-radius: 3px;
             border-radius: 3px;
@@ -811,7 +802,7 @@
 
             #toc.toc2 {
                 margin-top: 0 !important;
-                background: #f8f8f7;
+                background-color: #f8f8f7;
                 position: fixed;
                 width: 15em;
                 left: 0;
@@ -909,7 +900,7 @@
 
         #footer {
             max-width: 100%;
-            background: rgba(0, 0, 0, .8);
+            background-color: rgba(0, 0, 0, .8);
             padding: 1.25em
         }
 
@@ -976,15 +967,8 @@
             color: #a53221
         }
 
-        details, .audioblock, .imageblock, .literalblock, .listingblock, .stemblock, .videoblock {
+        .audioblock, .imageblock, .literalblock, .listingblock, .stemblock, .videoblock {
             margin-bottom: 1.25em
-        }
-
-        details > summary:first-of-type {
-            cursor: pointer;
-            display: list-item;
-            outline: none;
-            margin-bottom: .75em
         }
 
         .admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
@@ -1065,10 +1049,10 @@
         .sidebarblock {
             border-style: solid;
             border-width: 1px;
-            border-color: #dbdbd6;
+            border-color: #e0e0dc;
             margin-bottom: 1.25em;
             padding: 1.25em;
-            background: #f3f3f2;
+            background: #f8f8f7;
             -webkit-border-radius: 4px;
             border-radius: 4px
         }
@@ -1091,7 +1075,15 @@
             margin-bottom: 0
         }
 
-        .literalblock pre, .listingblock > .content > pre {
+        .literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
+            background: #f7f7f8
+        }
+
+        .sidebarblock .literalblock pre, .sidebarblock .listingblock pre:not(.highlight), .sidebarblock .listingblock pre[class="highlight"], .sidebarblock .listingblock pre[class^="highlight "], .sidebarblock .listingblock pre.CodeRay, .sidebarblock .listingblock pre.prettyprint {
+            background: #f2f1f1
+        }
+
+        .literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] {
             -webkit-border-radius: 4px;
             border-radius: 4px;
             word-wrap: break-word;
@@ -1101,56 +1093,25 @@
         }
 
         @media screen and (min-width: 768px) {
-            .literalblock pre, .listingblock > .content > pre {
+            .literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] {
                 font-size: .90625em
             }
         }
 
         @media screen and (min-width: 1280px) {
-            .literalblock pre, .listingblock > .content > pre {
+            .literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] {
                 font-size: 1em
             }
         }
 
-        .literalblock pre, .listingblock > .content > pre:not(.highlight), .listingblock > .content > pre[class="highlight"], .listingblock > .content > pre[class^="highlight "] {
-            background: #f7f7f8
+        .literalblock pre.nowrap, .literalblock pre.nowrap pre, .listingblock pre.nowrap, .listingblock pre.nowrap pre {
+            white-space: pre;
+            word-wrap: normal
         }
 
         .literalblock.output pre {
             color: #f7f7f8;
-            background: rgba(0, 0, 0, .9)
-        }
-
-        .listingblock > .content {
-            position: relative
-        }
-
-        .listingblock code[data-lang]::before {
-            display: none;
-            content: attr(data-lang);
-            position: absolute;
-            font-size: .75em;
-            top: .425rem;
-            right: .5rem;
-            line-height: 1;
-            text-transform: uppercase;
-            color: inherit;
-            opacity: .5
-        }
-
-        .listingblock:hover code[data-lang]::before {
-            display: block
-        }
-
-        .listingblock.terminal pre .command::before {
-            content: attr(data-prompt);
-            padding-right: .5em;
-            color: inherit;
-            opacity: .5
-        }
-
-        .listingblock.terminal pre .command:not([data-prompt])::before {
-            content: "$"
+            background-color: rgba(0, 0, 0, .9)
         }
 
         .listingblock pre.highlightjs {
@@ -1167,64 +1128,70 @@
             border-width: 0
         }
 
-        .prettyprint {
-            background: #f7f7f8
+        .listingblock > .content {
+            position: relative
         }
 
-        pre.prettyprint .linenums {
-            line-height: 1.45;
-            margin-left: 2em
+        .listingblock code[data-lang]::before {
+            display: none;
+            content: attr(data-lang);
+            position: absolute;
+            font-size: .75em;
+            top: .425rem;
+            right: .5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            color: #999
         }
 
-        pre.prettyprint li {
-            background: none;
-            list-style-type: inherit;
-            padding-left: 0
+        .listingblock:hover code[data-lang]::before {
+            display: block
         }
 
-        pre.prettyprint li code[data-lang]::before {
-            opacity: 1
+        .listingblock.terminal pre .command::before {
+            content: attr(data-prompt);
+            padding-right: .5em;
+            color: #999
         }
 
-        pre.prettyprint li:not(:first-child) code[data-lang]::before {
-            display: none
+        .listingblock.terminal pre .command:not([data-prompt])::before {
+            content: "$"
         }
 
-        table.linenotable {
+        table.pyhltable {
             border-collapse: separate;
             border: 0;
             margin-bottom: 0;
             background: none
         }
 
-        table.linenotable td[class] {
-            color: inherit;
+        table.pyhltable td {
             vertical-align: top;
-            padding: 0;
-            line-height: inherit;
-            white-space: normal
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 1.45
         }
 
-        table.linenotable td.code {
-            padding-left: .75em
+        table.pyhltable td.code {
+            padding-left: .75em;
+            padding-right: 0
         }
 
-        table.linenotable td.linenos {
-            border-right: 1px solid currentColor;
-            opacity: .35;
-            padding-right: .5em
+        pre.pygments .lineno, table.pyhltable td:not(.code) {
+            color: #999;
+            padding-left: 0;
+            padding-right: .5em;
+            border-right: 1px solid #dddddf
         }
 
         pre.pygments .lineno {
-            border-right: 1px solid currentColor;
-            opacity: .35;
             display: inline-block;
-            margin-right: .75em
+            margin-right: .25em
         }
 
-        pre.pygments .lineno::before {
-            content: "";
-            margin-right: -.125em
+        table.pyhltable .linenodiv {
+            background: none !important;
+            padding-right: 0 !important
         }
 
         .quoteblock {
@@ -1232,7 +1199,7 @@
             display: table
         }
 
-        .quoteblock:not(.excerpt) > .title {
+        .quoteblock > .title {
             margin-left: -1.5em;
             margin-bottom: .75em
         }
@@ -1331,13 +1298,10 @@
             text-align: center
         }
 
-        .quoteblock.excerpt > blockquote, .quoteblock .quoteblock {
+        .quoteblock.excerpt, .quoteblock .quoteblock {
+            margin: 0 0 1.25em;
             padding: 0 0 .25em 1em;
             border-left: .25em solid #dddddf
-        }
-
-        .quoteblock.excerpt, .quoteblock .quoteblock {
-            margin-left: 0
         }
 
         .quoteblock.excerpt blockquote, .quoteblock.excerpt p, .quoteblock .quoteblock blockquote, .quoteblock .quoteblock p {
@@ -1360,12 +1324,8 @@
             margin-bottom: 0
         }
 
-        td.tableblock > .content > :last-child {
+        td.tableblock > .content {
             margin-bottom: -1.25em
-        }
-
-        td.tableblock > .content > :last-child.sidebarblock {
-            margin-bottom: 0
         }
 
         table.tableblock, th.tableblock, td.tableblock {
@@ -1412,8 +1372,12 @@
             border-width: 1px 0
         }
 
-        table.stripes-all tr, table.stripes-odd tr:nth-of-type(odd), table.stripes-even tr:nth-of-type(even), table.stripes-hover tr:hover {
+        table.stripes-all tr, table.stripes-odd tr:nth-of-type(odd) {
             background: #f8f8f7
+        }
+
+        table.stripes-none tr, table.stripes-odd tr:nth-of-type(even) {
+            background: none
         }
 
         th.halign-left, td.halign-left {
@@ -1462,6 +1426,10 @@
 
         p.tableblock {
             font-size: 1em
+        }
+
+        td > div.verse {
+            white-space: pre
         }
 
         ol {
@@ -1739,7 +1707,7 @@
         }
 
         .aqua-background {
-            background: #00fafa
+            background-color: #00fafa
         }
 
         .black {
@@ -1747,7 +1715,7 @@
         }
 
         .black-background {
-            background: #000
+            background-color: #000
         }
 
         .blue {
@@ -1755,7 +1723,7 @@
         }
 
         .blue-background {
-            background: #0000fa
+            background-color: #0000fa
         }
 
         .fuchsia {
@@ -1763,7 +1731,7 @@
         }
 
         .fuchsia-background {
-            background: #fa00fa
+            background-color: #fa00fa
         }
 
         .gray {
@@ -1771,7 +1739,7 @@
         }
 
         .gray-background {
-            background: #7d7d7d
+            background-color: #7d7d7d
         }
 
         .green {
@@ -1779,7 +1747,7 @@
         }
 
         .green-background {
-            background: #007d00
+            background-color: #007d00
         }
 
         .lime {
@@ -1787,7 +1755,7 @@
         }
 
         .lime-background {
-            background: #00fa00
+            background-color: #00fa00
         }
 
         .maroon {
@@ -1795,7 +1763,7 @@
         }
 
         .maroon-background {
-            background: #7d0000
+            background-color: #7d0000
         }
 
         .navy {
@@ -1803,7 +1771,7 @@
         }
 
         .navy-background {
-            background: #00007d
+            background-color: #00007d
         }
 
         .olive {
@@ -1811,7 +1779,7 @@
         }
 
         .olive-background {
-            background: #7d7d00
+            background-color: #7d7d00
         }
 
         .purple {
@@ -1819,7 +1787,7 @@
         }
 
         .purple-background {
-            background: #7d007d
+            background-color: #7d007d
         }
 
         .red {
@@ -1827,7 +1795,7 @@
         }
 
         .red-background {
-            background: #fa0000
+            background-color: #fa0000
         }
 
         .silver {
@@ -1835,7 +1803,7 @@
         }
 
         .silver-background {
-            background: #bcbcbc
+            background-color: #bcbcbc
         }
 
         .teal {
@@ -1843,7 +1811,7 @@
         }
 
         .teal-background {
-            background: #007d7d
+            background-color: #007d7d
         }
 
         .white {
@@ -1851,7 +1819,7 @@
         }
 
         .white-background {
-            background: #fafafa
+            background-color: #fafafa
         }
 
         .yellow {
@@ -1859,7 +1827,7 @@
         }
 
         .yellow-background {
-            background: #fafa00
+            background-color: #fafa00
         }
 
         span.icon > .fa {
@@ -1905,7 +1873,7 @@
         .conum[data-value] {
             display: inline-block;
             color: #fff !important;
-            background: rgba(0, 0, 0, .8);
+            background-color: rgba(0, 0, 0, .8);
             -webkit-border-radius: 100px;
             border-radius: 100px;
             text-align: center;
@@ -1968,7 +1936,7 @@
         }
 
         .exampleblock > .content {
-            background: #fffef7;
+            background-color: #fffef7;
             border-color: #e0e0dc;
             -webkit-box-shadow: 0 1px 4px #e0e0dc;
             box-shadow: 0 1px 4px #e0e0dc
@@ -2141,6 +2109,9 @@
 <body class="book toc2 toc-left" id="resources">
 <div id="header">
     <h1>Resources</h1>
+    <div class="details">
+        <span id="revnumber">version 0.0.1-SNAPSHOT</span>
+    </div>
     <div class="toc2" id="toc">
         <div id="toctitle">Table of Contents</div>
         <ul class="sectlevel1">
@@ -2168,14 +2139,14 @@
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">POST /api/todos HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/todos HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
 Content-Length: 34
 Host: localhost:8080
 
 {
-  &quot;contents&quot; : &quot;해야할 일&quot;
+  "contents" : "해야할 일"
 }</code></pre>
                         </div>
                     </div>
@@ -2186,14 +2157,14 @@ Host: localhost:8080
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 201 Created
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
 Content-Type: application/json;charset=UTF-8
 Content-Length: 53
 
 {
-  &quot;code&quot; : null,
-  &quot;message&quot; : null,
-  &quot;data&quot; : 1
+  "code" : null,
+  "message" : null,
+  "data" : 1
 }</code></pre>
                         </div>
                     </div>
@@ -2277,7 +2248,7 @@ Content-Length: 53
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">GET /api/todos HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/todos HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
 Host: localhost:8080</code></pre>
@@ -2290,16 +2261,16 @@ Host: localhost:8080</code></pre>
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 108
 
 {
-  &quot;code&quot; : null,
-  &quot;message&quot; : null,
-  &quot;data&quot; : [ {
-    &quot;id&quot; : 1,
-    &quot;contents&quot; : &quot;해야할 일&quot;
+  "code" : null,
+  "message" : null,
+  "data" : [ {
+    "id" : 1,
+    "contents" : "해야할 일"
   } ]
 }</code></pre>
                         </div>
@@ -2364,14 +2335,14 @@ Content-Length: 108
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">PATCH /api/todos HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PATCH /api/todos HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 53
 Host: localhost:8080
 
 {
-  &quot;id&quot; : 1,
-  &quot;contents&quot; : &quot;바꾼 해야할 일&quot;
+  "id" : 1,
+  "contents" : "바꾼 해야할 일"
 }</code></pre>
                         </div>
                     </div>
@@ -2382,14 +2353,14 @@ Host: localhost:8080
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 204 No Content
 Content-Type: application/json;charset=UTF-8
 Content-Length: 56
 
 {
-  &quot;code&quot; : null,
-  &quot;message&quot; : null,
-  &quot;data&quot; : null
+  "code" : null,
+  "message" : null,
+  "data" : null
 }</code></pre>
                         </div>
                     </div>
@@ -2439,14 +2410,14 @@ Content-Length: 56
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">PATCH /api/todos/status HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PATCH /api/todos/status HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 41
 Host: localhost:8080
 
 {
-  &quot;id&quot; : 1,
-  &quot;status&quot; : &quot;inProgress&quot;
+  "id" : 1,
+  "status" : "inProgress"
 }</code></pre>
                         </div>
                     </div>
@@ -2457,14 +2428,14 @@ Host: localhost:8080
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 204 No Content
 Content-Type: application/json;charset=UTF-8
 Content-Length: 56
 
 {
-  &quot;code&quot; : null,
-  &quot;message&quot; : null,
-  &quot;data&quot; : null
+  "code" : null,
+  "message" : null,
+  "data" : null
 }</code></pre>
                         </div>
                     </div>
@@ -2514,13 +2485,13 @@ Content-Length: 56
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">DELETE /api/todos HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /api/todos HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 14
 Host: localhost:8080
 
 {
-  &quot;id&quot; : 1
+  "id" : 1
 }</code></pre>
                         </div>
                     </div>
@@ -2531,14 +2502,14 @@ Host: localhost:8080
                         예시</a></h4>
                     <div class="listingblock">
                         <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 204 No Content
 Content-Type: application/json;charset=UTF-8
 Content-Length: 56
 
 {
-  &quot;code&quot; : null,
-  &quot;message&quot; : null,
-  &quot;data&quot; : null
+  "code" : null,
+  "message" : null,
+  "data" : null
 }</code></pre>
                         </div>
                     </div>
@@ -2576,8 +2547,12 @@ Content-Length: 56
 </div>
 <div id="footer">
     <div id="footer-text">
-        Last updated 2020-06-10 01:14:33 +0900
+        Version 0.0.1-SNAPSHOT<br>
+        Last updated 2020-06-10 01:21:29 +0900
     </div>
 </div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>
