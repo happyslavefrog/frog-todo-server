@@ -5,6 +5,8 @@ import org.springframework.restdocs.payload.JsonFieldType;
 
 import static com.frog.todo.common.ApiDocumentUtils.getDocumentRequest;
 import static com.frog.todo.common.ApiDocumentUtils.getDocumentResponse;
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.responseHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
@@ -32,10 +34,13 @@ public class TodoItemDocumentation {
                 requestFields(
                         fieldWithPath("contents").type(JsonFieldType.STRING).description("해야할 일")
                 ),
+                responseHeaders(
+                        headerWithName("Location").description("새롭게 생성된 Todo의 위치")
+                ),
                 responseFields(
                         fieldWithPath("code").type(JsonFieldType.NULL).description("null").optional(),
                         fieldWithPath("message").type(JsonFieldType.NULL).description("null").optional(),
-                        fieldWithPath("data").type(JsonFieldType.NUMBER).description(1)
+                        fieldWithPath("data").type(JsonFieldType.NULL).description("null").optional()
                 )
         );
     }

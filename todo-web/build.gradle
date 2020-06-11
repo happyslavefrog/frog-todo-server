@@ -36,6 +36,10 @@ bootJar {
     from ("${asciidoctor.outputDir}/html5") {
         into 'static/docs'
     }
+    finalizedBy('copyApiDocs')
+}
+
+task copyApiDocs(type: Copy) {
     copy {
         from("${asciidoctor.outputDir}/html5"){
             include "*.html"

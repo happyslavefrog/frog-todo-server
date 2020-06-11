@@ -11,33 +11,56 @@ endif::[]
 :operation-http-response-title: 응답 예시
 
 [[resources]]
-= Resources
+= **Resources**
+
+== 공통 Response Body
+
+|===
+| field | 설명
+
+| `code`
+| 응답 코드
+
+| `message`
+| 예외사항 내용 등 응답 메세지
+
+| `data`
+| 실제 반환될 데이터
+|===
 
 [[resources-todos]]
-== Todos
+== **Todos**
 
 [[resources-todos-create]]
-=== 할 일 추가하기
+=== **할 일 추가하기**
 
-operation::todos/create[snippets='http-request,http-response,request-fields,response-fields']
+operation::todos/create[snippets='http-request,http-response,request-fields,response-headers,response-fields']
+
+---
 
 [[resources-todos-getAll]]
-=== 할 일 조회하기
+=== **할 일 조회하기**
 
 operation::todos/getAll[snippets='http-request,http-response,response-fields']
 
+---
+
 [[resources-todos-changeContents]]
-=== 할 일 수정하기
+=== **할 일 수정하기**
 
 operation::todos/changeContents[snippets='http-request,http-response,request-fields']
 
+---
+
 [[resources-todos-changeStatus]]
-=== 할 일 상태 변경하기
+=== **할 일 상태 변경하기**
 
 operation::todos/changeStatus[snippets='http-request,http-response,request-fields']
 
+---
+
 [[resources-todos-delete]]
-=== 할 일 제거하기
+=== **할 일 제거하기**
 
 operation::todos/delete[snippets='http-request,http-response,request-fields']
 

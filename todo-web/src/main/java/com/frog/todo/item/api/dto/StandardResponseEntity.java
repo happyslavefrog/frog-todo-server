@@ -18,7 +18,7 @@ public class StandardResponseEntity<T> {
         return new StandardResponseEntity<>(null, null, null);
     }
 
-    public static <T> StandardResponseEntity<T> ok(final T data) {
+    public static <T> StandardResponseEntity<T> of(final T data) {
         return new StandardResponseEntity<>(null, null, data);
     }
 

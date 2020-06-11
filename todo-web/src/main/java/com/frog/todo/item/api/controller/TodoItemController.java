@@ -1,4 +1,4 @@
-package com.frog.todo.item.api;
+package com.frog.todo.item.api.controller;
 
 import com.frog.todo.item.api.dto.StandardResponseEntity;
 import com.frog.todo.item.service.TodoItemService;
@@ -31,14 +31,14 @@ public class TodoItemController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public StandardResponseEntity<List<TodoItemResponse>> getAllTodoItems() {
-        return StandardResponseEntity.ok(todoItemService.getAllTodoItems());
+        return StandardResponseEntity.of(todoItemService.getAllTodoItems());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public StandardResponseEntity<Long> createTodoItem(@RequestBody @Valid TodoCreateRequest todoCreateRequest) {
+    public StandardResponseEntity<String> createTodoItem(@RequestBody @Valid TodoCreateRequest todoCreateRequest) {
         Long id = todoItemService.save(todoCreateRequest);
-        return StandardResponseEntity.ok(id);
+        return StandardResponseEntity.of("/api/todos/" + id);
     }
 
     @PatchMapping
