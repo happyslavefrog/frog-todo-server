@@ -1,7 +1,6 @@
 package com.frog.todo.item.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.frog.todo.common.advice.filter.CreateLocationFilter;
 import com.frog.todo.item.api.docs.TodoItemDocumentation;
 import com.frog.todo.item.service.TodoItemService;
 import com.frog.todo.item.service.dto.TodoCreateRequest;
@@ -53,7 +52,6 @@ class TodoItemControllerTest {
     public void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
                 .addFilter(new CharacterEncodingFilter("UTF-8", true))
-                .addFilter(new CreateLocationFilter(objectMapper))
                 .apply(documentationConfiguration(restDocumentation))
                 .build();
     }

@@ -8,6 +8,7 @@ import com.frog.todo.item.service.dto.TodoItemResponse;
 import com.frog.todo.item.service.dto.TodoStatusChangeRequest;
 import com.frog.todo.item.service.dto.TodoUpdateRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -36,9 +38,10 @@ public class TodoItemController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public StandardResponseEntity<String> createTodoItem(@RequestBody @Valid TodoCreateRequest todoCreateRequest) {
+    public StandardResponseEntity<Void> createTodoItem(@RequestBody @Valid TodoCreateRequest todoCreateRequest, HttpServletResponse response) {
         Long id = todoItemService.save(todoCreateRequest);
-        return StandardResponseEntity.of("/api/todos/" + id);
+        response.setHeader(HttpHeaders.LOCATION, "/api/todos/" + id);
+        return StandardResponseEntity.noContent();
     }
 
     @PatchMapping
