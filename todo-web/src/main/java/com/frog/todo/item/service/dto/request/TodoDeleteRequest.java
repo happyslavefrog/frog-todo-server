@@ -1,4 +1,4 @@
-package com.frog.todo.item.service.dto;
+package com.frog.todo.item.service.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;

@@ -2,11 +2,11 @@ package com.frog.todo.item.api.controller;
 
 import com.frog.todo.item.api.dto.StandardResponseEntity;
 import com.frog.todo.item.service.TodoItemService;
-import com.frog.todo.item.service.dto.TodoCreateRequest;
-import com.frog.todo.item.service.dto.TodoDeleteRequest;
-import com.frog.todo.item.service.dto.TodoItemResponse;
-import com.frog.todo.item.service.dto.TodoStatusChangeRequest;
-import com.frog.todo.item.service.dto.TodoUpdateRequest;
+import com.frog.todo.item.service.dto.request.TodoCreateRequest;
+import com.frog.todo.item.service.dto.request.TodoDeleteRequest;
+import com.frog.todo.item.service.dto.request.TodoStatusChangeRequest;
+import com.frog.todo.item.service.dto.request.TodoUpdateRequest;
+import com.frog.todo.item.service.dto.response.TodoItemsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/todos")
@@ -32,8 +31,8 @@ public class TodoItemController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public StandardResponseEntity<List<TodoItemResponse>> getAllTodoItems() {
-        return StandardResponseEntity.of(todoItemService.getAllTodoItems());
+    public StandardResponseEntity<TodoItemsResponse> getAllTodoItems() {
+        return StandardResponseEntity.of(new TodoItemsResponse(todoItemService.getAllTodoItems()));
     }
 
     @PostMapping

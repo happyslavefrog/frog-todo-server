@@ -1,13 +1,17 @@
 package com.frog.todo.item.api;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.frog.todo.domain.model.TodoStatus;
 import com.frog.todo.item.api.docs.TodoItemDocumentation;
+import com.frog.todo.item.api.dto.StandardResponseEntity;
 import com.frog.todo.item.service.TodoItemService;
-import com.frog.todo.item.service.dto.TodoCreateRequest;
-import com.frog.todo.item.service.dto.TodoDeleteRequest;
-import com.frog.todo.item.service.dto.TodoItemResponse;
-import com.frog.todo.item.service.dto.TodoStatusChangeRequest;
-import com.frog.todo.item.service.dto.TodoUpdateRequest;
+import com.frog.todo.item.service.dto.request.TodoCreateRequest;
+import com.frog.todo.item.service.dto.request.TodoDeleteRequest;
+import com.frog.todo.item.service.dto.request.TodoStatusChangeRequest;
+import com.frog.todo.item.service.dto.request.TodoUpdateRequest;
+import com.frog.todo.item.service.dto.response.TodoItemResponse;
+import com.frog.todo.item.service.dto.response.TodoItemsResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,12 +23,15 @@ import org.springframework.http.MediaType;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
@@ -59,15 +66,23 @@ class TodoItemControllerTest {
     @DisplayName("문서 : 전체 투두 리스트 가져오기")
     @Test
     void getAllTodoItems() throws Exception {
-        TodoItemResponse todoItemResponse = new TodoItemResponse(1L, "해야할 일");
+        TodoItemResponse todoItemResponse = new TodoItemResponse(1L, "해야할 일", TodoStatus.TODO, LocalDateTime.now(), LocalDateTime.now());
         when(todoItemService.getAllTodoItems()).thenReturn(Arrays.asList(todoItemResponse));
 
-        this.mockMvc.perform(get("/api/todos")
+        MvcResult mvcResult = this.mockMvc.perform(get("/api/todos")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andDo(TodoItemDocumentation.getAll());
+                .andDo(TodoItemDocumentation.getAll())
+                .andReturn();
+
+        String contentAsString = mvcResult.getResponse().getContentAsString();
+        StandardResponseEntity<TodoItemsResponse> todoItemResponseStandardResponseEntity
+                = objectMapper.readValue(contentAsString, new TypeReference<StandardResponseEntity<TodoItemsResponse>>() {
+        });
+        TodoItemResponse data = todoItemResponseStandardResponseEntity.getData().getTodoItems().get(0);
+        assertThat(data.getUpdatedTime()).isNotNull();
     }
 
     @DisplayName("문서 : 새로운 투두 아이템 생성")

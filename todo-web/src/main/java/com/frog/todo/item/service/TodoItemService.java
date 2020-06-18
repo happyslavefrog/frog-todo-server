@@ -1,13 +1,13 @@
 package com.frog.todo.item.service;
 
-import com.frog.todo.item.domain.model.TodoItem;
-import com.frog.todo.item.domain.model.TodoStatus;
-import com.frog.todo.item.domain.repository.TodoItemRepository;
-import com.frog.todo.item.service.dto.TodoCreateRequest;
-import com.frog.todo.item.service.dto.TodoDeleteRequest;
-import com.frog.todo.item.service.dto.TodoItemResponse;
-import com.frog.todo.item.service.dto.TodoStatusChangeRequest;
-import com.frog.todo.item.service.dto.TodoUpdateRequest;
+import com.frog.todo.domain.model.TodoItem;
+import com.frog.todo.domain.model.TodoStatus;
+import com.frog.todo.domain.repository.TodoItemRepository;
+import com.frog.todo.item.service.dto.request.TodoCreateRequest;
+import com.frog.todo.item.service.dto.request.TodoDeleteRequest;
+import com.frog.todo.item.service.dto.request.TodoStatusChangeRequest;
+import com.frog.todo.item.service.dto.request.TodoUpdateRequest;
+import com.frog.todo.item.service.dto.response.TodoItemResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

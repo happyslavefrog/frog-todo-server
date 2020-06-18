@@ -1,4 +1,4 @@
-package com.frog.todo.item.domain.model;
+package com.frog.todo.domain.model;
 
 
 import lombok.AccessLevel;

@@ -21,8 +21,11 @@ public class TodoItemDocumentation {
                 responseFields(
                         fieldWithPath("code").type(JsonFieldType.NULL).description("null").optional(),
                         fieldWithPath("message").type(JsonFieldType.NULL).description("null").optional(),
-                        fieldWithPath("data[0].id").type(JsonFieldType.NUMBER).description(1),
-                        fieldWithPath("data[0].contents").type(JsonFieldType.STRING).description("해야할 일")
+                        fieldWithPath("data.todoItems[0].id").type(JsonFieldType.NUMBER).description(1),
+                        fieldWithPath("data.todoItems[0].contents").type(JsonFieldType.STRING).description("해야할 일"),
+                        fieldWithPath("data.todoItems[0].todoStatus").type(JsonFieldType.STRING).description("진행 상태,todo,inProgress,done"),
+                        fieldWithPath("data.todoItems[0].createdTime").type(JsonFieldType.STRING).description("최초 생성 시간"),
+                        fieldWithPath("data.todoItems[0].updatedTime").type(JsonFieldType.STRING).description("최종 갱신 시간")
                 )
         );
     }
