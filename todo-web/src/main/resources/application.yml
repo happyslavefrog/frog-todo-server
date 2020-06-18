@@ -1,5 +1,13 @@
 spring:
+  profiles:
+    active: prod
   jpa:
     open-in-view: false
 server:
   port: 8080
+
+---
+spring.profiles: local
+spring:
+  resources:
+    static-locations: file:todo-web/src/main/resources/static/
