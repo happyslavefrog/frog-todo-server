@@ -20,6 +20,14 @@
             </li>
             <li>
                 <a
+                        href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa"
+                        rel="noopener"
+                        target="_blank"
+                >pwa</a
+                >
+            </li>
+            <li>
+                <a
                         href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
                         rel="noopener"
                         target="_blank"
