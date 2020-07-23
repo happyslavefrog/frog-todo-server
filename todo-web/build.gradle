@@ -29,7 +29,7 @@ task buildFrontEnd(type: Exec) {
 
 task buildPublish(){
     dependsOn 'cloneSubmodule'
-    dependsOn 'buildFrontEnd'
+//    dependsOn 'buildFrontEnd'
 }
 
 processResources.dependsOn 'buildPublish'
