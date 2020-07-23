@@ -21,11 +21,11 @@ task cloneSubmodule(type: Exec) {
     commandLine 'git', 'submodule', 'update'
 }
 
-task buildFrontEnd(type: Exec) {
-    workingDir "./src/front"
-    commandLine 'npm', 'install'
-    commandLine 'npm', 'run', 'build'
-}
+//task buildFrontEnd(type: Exec) {
+//    workingDir "./src/front"
+//    commandLine 'npm', 'install'
+//    commandLine 'npm', 'run', 'build'
+//}
 
 task buildPublish(){
     dependsOn 'cloneSubmodule'
