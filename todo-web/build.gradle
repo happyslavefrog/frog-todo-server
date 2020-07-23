@@ -53,3 +53,11 @@ task copyApiDocs(type: Copy) {
         into apiDocsDir
     }
 }
+
+task buildFrontEnd(type: Exec) {
+    workingDir "./src/front"
+    commandLine 'npm', 'install'
+    commandLine 'npm', 'run', 'build'
+}
+
+processResources.dependsOn 'buildFrontEnd'
