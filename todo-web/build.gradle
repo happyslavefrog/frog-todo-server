@@ -19,6 +19,7 @@ task cloneSubmodule(type: Exec) {
     workingDir "./"
     commandLine 'git', 'submodule', 'init'
     commandLine 'git', 'submodule', 'update'
+    commandLine 'git', 'submodule', 'foreach', 'git', 'pull', 'origin', 'master'
 }
 
 //task buildFrontEnd(type: Exec) {
@@ -27,7 +28,7 @@ task cloneSubmodule(type: Exec) {
 //    commandLine 'npm', 'run', 'build'
 //}
 
-task buildPublish(){
+task buildPublish() {
     dependsOn 'cloneSubmodule'
 //    dependsOn 'buildFrontEnd'
 }
