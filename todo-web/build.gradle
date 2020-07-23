@@ -21,9 +21,15 @@ task cloneSubmodule(type: Exec) {
     commandLine 'git', 'submodule', 'update'
 }
 
+//task buildFrontEnd(type: Exec) {
+//    workingDir "./src/front"
+//    commandLine 'npm', 'install'
+//    commandLine 'npm', 'run', 'build'
+//}
 
 task buildPublish(){
     dependsOn 'cloneSubmodule'
+//    dependsOn 'buildFrontEnd'
 }
 
 processResources.dependsOn 'buildPublish'
@@ -59,5 +65,3 @@ task copyApiDocs(type: Copy) {
         into apiDocsDir
     }
 }
-
-processResources.dependsOn 'buildFrontEnd'
