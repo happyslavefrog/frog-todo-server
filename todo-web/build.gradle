@@ -14,14 +14,14 @@ dependencies {
     asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
-
-task buildFrontEnd(type: Exec) {
-    workingDir "./src/front"
-    commandLine 'npm', 'install'
-    commandLine 'npm', 'run', 'build'
-}
-
-processResources.dependsOn 'buildFrontEnd'
+//
+//task buildFrontEnd(type: Exec) {
+//    workingDir "./src/front"
+//    commandLine 'npm', 'install'
+//    commandLine 'npm', 'run', 'build'
+//}
+//
+//processResources.dependsOn 'buildFrontEnd'
 
 ext {
     snippetsDir = file('build/generated-snippets')
