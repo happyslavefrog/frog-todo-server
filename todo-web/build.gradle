@@ -17,11 +17,11 @@ dependencies {
 }
 
 task installFront(type: NpmTask) {
-    args = ['install','prefix','./src/front']
+    args = ['install','--prefix','./src/front']
 }
 
 task buildFront(type: NpmTask) {
-    args = ['prefix','./src/front','run','build']
+    args = ['--prefix','./src/front','run','build']
 }
 
 task buildFrontEnd(){
