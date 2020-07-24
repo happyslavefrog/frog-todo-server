@@ -16,7 +16,7 @@ dependencies {
 }
 
 task cloneSubmodule(type: Exec) {
-    workingDir "./"
+    workingDir "../"
     commandLine 'git', 'submodule', 'init'
     commandLine 'git', 'submodule', 'update'
     commandLine 'git', 'submodule', 'foreach', 'git', 'pull', 'origin', 'master'
