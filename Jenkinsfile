@@ -6,6 +6,7 @@ node {
         nodejs(nodeJSInstallationName: 'node') {
             sh 'pwd'
             sh 'cd ./todo-web/src/front'
+            sh 'pwd'
             sh 'npm install'
             sh 'npm run build'
         }
