@@ -5,6 +5,7 @@ node {
     stage ('npm build'){
         nodejs(nodeJSInstallationName: 'node') {
             sh 'pwd'
+            sh 'ls -al'
             sh 'cd ./todo-web/src/front'
             sh 'pwd'
             sh 'npm install'
