@@ -21,17 +21,13 @@ task cloneSubmodule(type: Exec) {
     commandLine 'git', 'submodule', 'update', '--init', '--recursive'
 }
 
-//task buildFrontEnd(type: Exec) {
-//    workingDir "./src/front"
-//    commandLine 'npm', 'install'
-//    commandLine 'npm', 'run', 'build'
-//}
-//
-//task buildPublish() {
-////    dependsOn 'buildFrontEnd'
-//}
-//
-//processResources.dependsOn 'buildPublish'
+task buildFrontEnd(type: Exec) {
+    workingDir "./src/front"
+    commandLine 'npm', 'install'
+    commandLine 'npm', 'run', 'build'
+}
+
+processResources.dependsOn 'buildFrontEnd'
 
 ext {
     snippetsDir = file('build/generated-snippets')
