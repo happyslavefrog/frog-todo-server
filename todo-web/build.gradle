@@ -15,11 +15,11 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
-//task cloneSubmodule(type: Exec) {
-//    workingDir "../"
-//    description 'Updates (and inits) git submodules'
-//    commandLine 'git', 'submodule', 'update', '--init', '--recursive'
-//}
+task cloneSubmodule(type: Exec) {
+    workingDir "../"
+    description 'Updates (and inits) git submodules'
+    commandLine 'git', 'submodule', 'update', '--init', '--recursive'
+}
 
 //task buildFrontEnd(type: Exec) {
 //    workingDir "./src/front"
@@ -28,7 +28,6 @@ dependencies {
 //}
 //
 //task buildPublish() {
-//    dependsOn 'cloneSubmodule'
 ////    dependsOn 'buildFrontEnd'
 //}
 //
