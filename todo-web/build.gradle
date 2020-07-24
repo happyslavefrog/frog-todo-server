@@ -17,9 +17,8 @@ dependencies {
 
 task cloneSubmodule(type: Exec) {
     workingDir "../"
-    commandLine 'git', 'submodule', 'init'
-    commandLine 'git', 'submodule', 'update'
-    commandLine 'git', 'submodule', 'foreach', 'git', 'pull', 'origin', 'master'
+    description 'Updates (and inits) git submodules'
+    commandLine 'git', 'submodule', 'update', '--init', '--recursive'
 }
 
 //task buildFrontEnd(type: Exec) {
