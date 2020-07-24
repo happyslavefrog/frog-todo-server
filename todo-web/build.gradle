@@ -15,24 +15,24 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
-task cloneSubmodule(type: Exec) {
-    workingDir "../"
-    description 'Updates (and inits) git submodules'
-    commandLine 'git', 'submodule', 'update', '--init', '--recursive'
-}
+//task cloneSubmodule(type: Exec) {
+//    workingDir "../"
+//    description 'Updates (and inits) git submodules'
+//    commandLine 'git', 'submodule', 'update', '--init', '--recursive'
+//}
 
 //task buildFrontEnd(type: Exec) {
 //    workingDir "./src/front"
 //    commandLine 'npm', 'install'
 //    commandLine 'npm', 'run', 'build'
 //}
-
-task buildPublish() {
-    dependsOn 'cloneSubmodule'
-//    dependsOn 'buildFrontEnd'
-}
-
-processResources.dependsOn 'buildPublish'
+//
+//task buildPublish() {
+//    dependsOn 'cloneSubmodule'
+////    dependsOn 'buildFrontEnd'
+//}
+//
+//processResources.dependsOn 'buildPublish'
 
 ext {
     snippetsDir = file('build/generated-snippets')
