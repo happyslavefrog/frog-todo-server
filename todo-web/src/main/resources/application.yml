@@ -1,6 +1,8 @@
 spring:
   profiles:
     active: prod
+    include: >
+      secret
   jpa:
     open-in-view: false
 server:

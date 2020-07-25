@@ -16,17 +16,21 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
-task buildFrontEnd(type: Exec) {
-    workingDir "./src/front"
-    commandLine 'npm', 'install'
-    commandLine 'npm', 'run', 'build'
+task installNpm(type: NpmTask) {
+    args = ['install','--prefix','./src/front']
 }
-processResources.dependsOn 'buildFrontEnd'
+
+task buildFront(type: NpmTask,dependsOn: installNpm) {
+    args = ['--prefix','./src/front','run', 'build']
+}
+
+processResources.dependsOn 'buildFront'
 
 ext {
     snippetsDir = file('build/generated-snippets')
     apiDocsDir = file('src/main/resources/static/docs')
 }
+
 
 test {
     useJUnitPlatform()
@@ -54,3 +58,4 @@ task copyApiDocs(type: Copy) {
         into apiDocsDir
     }
 }
+
