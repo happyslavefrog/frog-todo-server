@@ -20,6 +20,7 @@ task buildFrontEnd(type: Exec) {
     commandLine 'npm', 'install'
     commandLine 'npm', 'run', 'build'
 }
+
 processResources.dependsOn 'buildFrontEnd'
 
 ext {
