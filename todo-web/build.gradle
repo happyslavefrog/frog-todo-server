@@ -28,6 +28,7 @@ ext {
     apiDocsDir = file('src/main/resources/static/docs')
 }
 
+
 test {
     useJUnitPlatform()
     outputs.dir snippetsDir
