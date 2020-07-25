@@ -21,6 +21,7 @@ task buildFrontEnd(type: Exec) {
     commandLine 'npm', 'run', 'build'
 }
 
+
 processResources.dependsOn 'buildFrontEnd'
 
 ext {
