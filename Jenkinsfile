@@ -1,5 +1,4 @@
 node {
-    download = true
     stage ('clone') {
         checkout scm
     }
