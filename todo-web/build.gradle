@@ -16,19 +16,11 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
-task installFront(type: NpmTask) {
-    args = ['install','--prefix','./src/front']
+task buildFrontEnd(type: Exec) {
+    workingDir "./src/front"
+    commandLine 'npm', 'install'
+    commandLine 'npm', 'run', 'build'
 }
-
-task buildFront(type: NpmTask) {
-    args = ['--prefix','./src/front','run','build']
-}
-
-task buildFrontEnd(){
-    dependsOn 'installFront'
-    dependsOn 'buildFront'
-}
-
 processResources.dependsOn 'buildFrontEnd'
 
 ext {
