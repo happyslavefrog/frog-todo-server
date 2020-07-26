@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 
 WEB_JAR=./todo-web/build/libs/*.jar
