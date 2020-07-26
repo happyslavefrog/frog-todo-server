@@ -1,6 +1,7 @@
 #!/bin/bash
+set -e
 
-DEPLOY_USER=`who -m | awk {'print $1'}`
+DEPLOY_USER=ubuntu
 echo "DEPLOY USER = $DEPLOY_USER"
 
 DEPLOY_DIR='/home/'$DEPLOY_USER'/app'
