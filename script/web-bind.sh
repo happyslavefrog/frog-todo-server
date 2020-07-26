@@ -10,10 +10,12 @@ echo "> WEB DIR 생성"
 mkdir -p $WEB_BASE
 mkdir -p $WEB_TARGET
 
-ehco "> WEB 배포 스크립트 이동"
+echo "> WEB 배포 스크립트 이동"
 cp $WEB_DEPLOY_SCRIPT $WEB_TARGET/
+
 echo "> WEB jar 이동"
 cp $WEB_JAR $WEB_TARGET/
+
 echo "> WEB 배포 스크립트, jar 압축"
 cd $WEB_TARGET
 tar -cvf web.tar *

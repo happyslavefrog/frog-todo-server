@@ -4,8 +4,11 @@ DEPLOY_USER=`who -m | awk {'print $1'}`
 echo "DEPLOY USER = $DEPLOY_USER"
 
 DEPLOY_DIR='/home/'$DEPLOY_USER'/app'
+mkdir -p $DEPLOY_DIR
 echo "DEPLOY_DIR = $DEPLOY_DIR"
+
 BACKUP_DIR='/home/'$DEPLOY_USER'/backup-app'
+mkdir -p $BACKUP_DIR
 echo "BACKUP_DIR = $BACKUP_DIR"
 
 PROJECT_NAME=todo-web
