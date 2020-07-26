@@ -58,4 +58,3 @@ task copyApiDocs(type: Copy) {
         into apiDocsDir
     }
 }
-
