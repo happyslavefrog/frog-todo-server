@@ -29,14 +29,14 @@ if [ -z "$CURRENT_PID" ]; then
 else
     echo "> back up to $BACKUP_DIR"
     cp $DEPLOY_DIR/*.jar $BACKUP_DIR/
-    echo "> kill -15 $CURRENT_PID"
-    kill -15 $CURRENT_PID
+    echo "> kill -2 $CURRENT_PID"
+    kill -2 $CURRENT_PID
     sleep 5
 fi
 
 echo "> 새 어플리케이션 배포"
 
-JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
+JAR_NAME=$(ls -tr $DEPLOY_DIR/*.jar | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
@@ -46,4 +46,4 @@ chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
 
-nohup java -jar $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar $JAR_NAME &
